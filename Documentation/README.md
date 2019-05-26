@@ -31,9 +31,9 @@ Sobre os perfis:
 
 ## Diagrama de Classe
 
-![DiagramaDeClasse]
+![DiagramaDeClasse](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Classe/Diagrama01.jpg)
 
 
 ##Diagrama de Caso de Uso
 
-![DiagramaCasodeUso]
+![DiagramaCasodeUso][https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Casos%20de%20Uso/Diagrama01.jpg]
