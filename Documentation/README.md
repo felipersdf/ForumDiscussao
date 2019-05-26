@@ -19,13 +19,11 @@ Sobre os perfis:
  #### Relacionado ao cadastro do usuário:
 
 * Deverão ser cadastrados nome, login/senha (verificando se o login já existe ou não).
-* Usar senhas codificadas.
+* As senhas serão codificadas.
 * Usar mecanismo de autenticação e controle de sessão, para o perfil Usuário.
-
-
 
 ### 2. Visitante
 
-* não necessita estar cadastrado no sistema;
-* capaz de consultar postagens e visualizar as suas respostas, identificando cada usuário pelo login;
+* Não necessita estar cadastrado no sistema;
+* O visitante será capaz de consultar postagens e visualizar as suas respostas, identificando cada usuário pelo login;
 * A consulta poderá ser por tema e/ou pelo titulo (ou parte dele) da postagem.
