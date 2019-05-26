@@ -27,3 +27,13 @@ Sobre os perfis:
 * Não necessita estar cadastrado no sistema;
 * O visitante será capaz de consultar postagens e visualizar as suas respostas, identificando cada usuário pelo login;
 * A consulta poderá ser por tema e/ou pelo titulo (ou parte dele) da postagem.
+
+
+## Diagrama de Classe
+
+![DiagramaDeClasse]
+
+
+##Diagrama de Caso de Uso
+
+![DiagramaCasodeUso]
