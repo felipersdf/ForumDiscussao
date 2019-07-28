@@ -4,8 +4,9 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 class ThreadsTest extends TestCase
 {
-	use DatabaseMigrations;
-    public function setUp()
+        use DatabaseMigrations;
+        
+    public function setUp():void
     {
         parent::setUp();
         $this->thread = factory('App\Thread')->create();
