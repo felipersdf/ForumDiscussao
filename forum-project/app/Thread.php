@@ -9,8 +9,7 @@ use Laravel\Scout\Searchable;
 
 class Thread extends Model
 {
-  use RecordsActivity, Searchable;
-  
+
   protected $guarded = [];
 
   protected static function boot()

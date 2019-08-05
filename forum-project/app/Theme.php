@@ -13,7 +13,7 @@ class Theme extends Model
         return 'slug';
     }
     /**
-     * A channel consists of threads.
+     * A theme consists of threads.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

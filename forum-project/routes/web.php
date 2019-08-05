@@ -24,7 +24,7 @@ Route::patch('threads/{channel}/{thread}', 'ThreadController@update');
 Route::delete('threads/{channel}/{thread}', 'ThreadController@destroy');
 Route::post('threads', 'ThreadController@store');
 Route::get('threads/{channel}', 'ThreadController@index');
-Route::post('/threads/{theme}/{thread}/replies', 'RepliesController@store');
+Route::post('/threads/{theme}/{thread}/replies', 'ReplyController@store');
 Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 
 Auth::routes();

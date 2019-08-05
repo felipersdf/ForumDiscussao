@@ -5,7 +5,7 @@ use Tests\TestCase;
 class UpdateThreadsTest extends TestCase
 {
     use RefreshDatabase;
-    public function setUp()
+    public function setUp():void
     {
         parent::setUp();
         $this->withExceptionHandling();
