@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Thread;
 use App\Theme;
 use Illuminate\Http\Request;
+use App\Filters\ThreadFilters;
 
 class ThreadController extends Controller
 {
@@ -13,13 +14,10 @@ class ThreadController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function index(Theme $theme)
+    public function index(Theme $theme, ThreadFilters $filters)
     {
-        if ($theme->exists) {
-            $threads = $theme->threads()->latest()->get();
-        } else {
-            $threads = Thread::latest()->get();
-        }
+        $threads = $this->getThreads($theme, $filters);
+
         return view('threads.index', compact('threads'));
     }
 
@@ -54,7 +52,10 @@ class ThreadController extends Controller
      */
     public function show($themeId, Thread $thread)
     {
-        return view('threads.show', compact('thread'));
+        return view('threads.show', [
+            'thread' => $thread,
+            'replies' => $thread->replies()->paginate(10)
+        ]);
     }
 
     /**
@@ -63,9 +64,15 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    protected function getThreads(Theme $theme, ThreadFilters $filters)
     {
-        //
+        $threads = Thread::latest()->filter($filters);
+
+        if ($theme->exists) {
+            $threads->where('theme_id', $theme->id);
+        }
+
+        return $threads->get();
     }
 
     /**
