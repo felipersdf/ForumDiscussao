@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Thread;
+use App\Theme;
 use Illuminate\Http\Request;
 
 class ThreadController extends Controller
@@ -12,9 +13,13 @@ class ThreadController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function index()
+    public function index(Theme $theme)
     {
-        $threads = Thread::latest()->get();
+        if ($theme->exists) {
+            $threads = $theme->threads()->latest()->get();
+        } else {
+            $threads = Thread::latest()->get();
+        }
         return view('threads.index', compact('threads'));
     }
 
@@ -28,7 +33,7 @@ class ThreadController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body'  => 'required',
+            'body' => 'required',
             'theme_id' => 'required|exists:themes,id'
         ]);
 

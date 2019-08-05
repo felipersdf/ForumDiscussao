@@ -17,10 +17,11 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('threads', 'ThreadsController@index');
-Route::get('threads/create', 'ThreadsController@create');
-Route::get('threads/{theme}/{thread}', 'ThreadsController@show');
-Route::post('threads', 'ThreadsController@store');
+Route::get('threads', 'ThreadController@index');
+Route::get('threads/create', 'ThreadController@create');
+Route::get('threads/{theme}/{thread}', 'ThreadController@show');
+Route::post('threads', 'ThreadController@store');
+Route::get('threads/{channel}', 'ThreadController@index');
 Route::post('/threads/{theme}/{thread}/replies', 'RepliesController@store');
 
 Auth::routes();
