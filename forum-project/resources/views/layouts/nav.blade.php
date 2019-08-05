@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="navbar-menu">
+            <!-- <div class="container"> -->
                 <a class="navbar-brand" href="{{ url('/threads') }}">
                     Forum TSI
                 </a>
@@ -46,5 +46,6 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+            <!-- </di
+v> -->
         </nav>
