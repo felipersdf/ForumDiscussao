@@ -5,18 +5,26 @@ namespace App;
 use App\Filters\ThreadFilters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Thread extends Model
 {
+  use RecordsActivity, Searchable;
+  
   protected $guarded = [];
 
   protected static function boot()
     {
         parent::boot();
+
         static::addGlobalScope('replyCount', function ($builder) {
             $builder->withCount('replies');
         });
-    }
+
+        static::deleting(function ($thread) {
+          $thread->replies()->delete();
+      });
+  }
 
   /* Uma thread possui um criador
   */ 

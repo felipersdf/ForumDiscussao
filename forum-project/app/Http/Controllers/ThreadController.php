@@ -50,7 +50,7 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show($themeId, Thread $thread)
+    public function show($theme, Thread $thread)
     {
         return view('threads.show', [
             'thread' => $thread,
@@ -82,9 +82,15 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thread $thread)
+    public function update($theme, Thread $thread)
     {
-        //
+        $this->authorize('update', $thread);
+
+        $thread->update(request()->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]));
+        return $thread;
     }
 
     /**
@@ -93,8 +99,12 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy($theme, Thread $thread)
     {
-        //
+        $thread->delete();
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+        return redirect('/threads');
     }
 }
