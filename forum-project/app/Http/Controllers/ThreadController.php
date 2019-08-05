@@ -26,8 +26,15 @@ class ThreadController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'body'  => 'required',
+            'theme_id' => 'required|exists:themes,id'
+        ]);
+
         $thread = Thread::create([
             'user_id' => auth()->id(),
+            'theme_id' => request('theme_id'),
             'title' => request('title'),
             'body' => request('body')
         ]);
@@ -40,7 +47,7 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show(Thread $thread)
+    public function show($themeId, Thread $thread)
     {
         return view('threads.show', compact('thread'));
     }
