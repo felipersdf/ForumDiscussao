@@ -45,3 +45,4 @@ Sobre os perfis:
 ![DiagramaPacote](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Pacote/DiagramaDePacote.png)
 
 ## Diagrama de Atividades
+![DiagramaAtividade](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Atividade/DiagramaDeAtividade.png)
