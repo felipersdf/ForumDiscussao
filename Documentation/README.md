@@ -31,12 +31,12 @@ Sobre os perfis:
 
 ## Diagrama de Classe
 
-![DiagramaDeClasse](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Classe/Diagrama01v3.jpg)
+![DiagramaDeClasse](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Classe/Diagrama01v4.jpg)
 
 
 ## Diagrama de Caso de Uso
 
-![DiagramaCasodeUso](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Casos%20de%20Uso/Diagramav3.jpg)
+![DiagramaCasodeUso](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Casos%20de%20Uso/Diagramav4.jpg)
 
 ## Diagrama de Sequência
 
@@ -44,5 +44,5 @@ Sobre os perfis:
 
 ![DiagramaPacote](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Pacote/DiagramaDePacote.png)
 
-## Diagrama de Atividades
+## Diagrama de Atividade
 ![DiagramaAtividade](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Atividade/DiagramaDeAtividade.png)
