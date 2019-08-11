@@ -40,6 +40,10 @@ Sobre os perfis:
 
 ## Diagrama de Sequência
 
+![DiagramaSequencia](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Sequência/DiagramaThread.png)
+
+![DiagramaSequencia2](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Sequência/DiagramaReply.png)
+
 ## Diagrama de Pacote
 
 ![DiagramaPacote](https://github.com/felipersdf/ForumDiscussao/blob/master/Documentation/Diagrama%20de%20Pacote/DiagramaDePacote.png)
