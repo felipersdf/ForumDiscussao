@@ -9,7 +9,7 @@
 
 ## Forum TSI 
 
-![ImagemForum](https://github.com/felipersdf/ForumDiscussao/tree/master/forum-project/ForumTSI.png)
+![ImagemForum](https://github.com/felipersdf/ForumDiscussao/blob/master/forum-project/ForumTSI.png)
 
 
 
