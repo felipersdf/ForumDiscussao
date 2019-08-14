@@ -13,8 +13,10 @@ class ReplyController extends Controller
 		$this->middleware('auth');
 	}
 	
-    public function store(Thread $thread)
+    public function store($themeId, Thread $thread)
     {
+        $this->validate(request(), ['body' => 'required']);
+
         $thread->addReply([
         	'body' => request('body'),
         	'user_id' => auth()->id()
@@ -84,6 +86,10 @@ class ReplyController extends Controller
      */
     public function destroy(Reply $reply)
     {
-        //
+        $reply->delete();
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+        return redirect('/threads');
     }
 }

@@ -17,9 +17,21 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('threads', 'ThreadController');
-
-Route::post('/threads/{thread}/replies', 'ReplyController@store');
+//Rotas para threads
+Route::get('threads', 'ThreadController@index');
+Route::get('threads/create', 'ThreadController@create');
+Route::get('threads/{theme}/{thread}', 'ThreadController@show');
+Route::patch('threads/{theme}/{thread}', 'ThreadController@update');
+Route::delete('threads/{theme}/{thread}', 'ThreadController@destroy');
+Route::post('threads', 'ThreadController@store');
+Route::get('threads/{theme}', 'ThreadController@index');
+//Rotas para replies
+Route::post('/threads/{theme}/{thread}/replies', 'ReplyController@store');
+Route::delete('/threads/{theme}/{thread}/replies','ReplyConroller@delete');
+//Rotas para profile
+Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 
 Auth::routes();
+
+
 

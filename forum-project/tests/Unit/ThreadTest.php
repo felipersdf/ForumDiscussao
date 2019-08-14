@@ -31,4 +31,18 @@ class ThreadTest extends TestCase
         ]);
         $this->assertCount(1, $this->thread->replies);
     }
+
+    function a_thread_belongs_to_a_theme()
+    {
+        $thread = create('App\Thread');
+        $this->assertInstanceOf('App\Theme', $thread->theme);
+    }
+
+    function a_thread_can_make_a_string_path()
+    {
+        $thread = create('App\Thread');
+        $this->assertEquals(
+            "/threads/{$thread->theme->slug}/{$thread->id}", $thread->path()
+        );
+    }
 }
