@@ -6,7 +6,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto" style="paggind-left: auto">
+                    <ul class="navbar-nav mr-auto mt-lg-0" style="paggind-left: auto; justif">
                         <li><a href='/threads'>All Threads</a></li>
                         @if (auth()->check())
                         <li><a href="/threads?by={{ auth()->user()->name }}">My Threads</a></li>
@@ -32,6 +32,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="">
+                                        Profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

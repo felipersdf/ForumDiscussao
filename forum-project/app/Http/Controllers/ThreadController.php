@@ -6,6 +6,7 @@ use App\Thread;
 use App\Theme;
 use Illuminate\Http\Request;
 use App\Filters\ThreadFilters;
+use Illuminate\Support\Facades\Validator;
 
 class ThreadController extends Controller
 {
@@ -29,21 +30,30 @@ class ThreadController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+
+        $validator = Validator::make($request->all(), [
             'title' => 'required',
             'body' => 'required',
-            'theme_id' => 'required|exists:themes,id'
+            'theme_id' => 'required', 
         ]);
+        
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator);
+        } else {
+            Thread::create($request->all());
 
-        $thread = Thread::create([
-            'user_id' => auth()->id(),
-            'theme_id' => request('theme_id'),
-            'title' => request('title'),
-            'body' => request('body')
-        ]);
-        return redirect($thread->path());
+            return redirect(route('threads.index'))->with('success', 'Thread is successfully created');
+        // } Thread::create([
+        //     'user_id' => auth()->id(),
+        //     'theme_id' => request('theme_id'),
+        //     'title' => request('title'),
+        //     'body' => request('body')
+        // ]);
+        }
     }
-
     /**
      * Display the specified resource.
      *
@@ -53,7 +63,7 @@ class ThreadController extends Controller
     public function show($theme, Thread $thread)
     {
         return view('threads.show', [
-            'thread' => $thread,
+            'thread' => $thread, //->paginate(10),
             'replies' => $thread->replies()->paginate(5)
         ]);
     }

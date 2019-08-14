@@ -17,14 +17,18 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Rotas para threads
 Route::get('threads', 'ThreadController@index');
 Route::get('threads/create', 'ThreadController@create');
 Route::get('threads/{theme}/{thread}', 'ThreadController@show');
-Route::patch('threads/{channel}/{thread}', 'ThreadController@update');
-Route::delete('threads/{channel}/{thread}', 'ThreadController@destroy');
+Route::patch('threads/{theme}/{thread}', 'ThreadController@update');
+Route::delete('threads/{theme}/{thread}', 'ThreadController@destroy');
 Route::post('threads', 'ThreadController@store');
-Route::get('threads/{channel}', 'ThreadController@index');
+Route::get('threads/{theme}', 'ThreadController@index');
+//Rotas para replies
 Route::post('/threads/{theme}/{thread}/replies', 'ReplyController@store');
+Route::delete('/threads/{theme}/{thread}/replies','ReplyConroller@delete');
+//Rotas para profile
 Route::get('/profiles/{user}', 'ProfilesController@show')->name('profile');
 
 Auth::routes();

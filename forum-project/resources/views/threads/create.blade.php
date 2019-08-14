@@ -15,13 +15,14 @@
                             <label for="channel_id">Choose a Theme:</label>
                             <select name="channel_id" id="channel_id" class="form-control" required>
                                 <option value="">Choose One...</option>
-
+                                <!-- Verificar se o theme->id está sendo enviado -->
                                 @foreach (App\Theme::all() as $theme)
-                                <option value="{{ $theme->id }}" {{ old('theme_id') == $theme->id ? 'selected' : '' }}>
+                                <option value="{{ $theme->id }}" {{ $theme->id ? 'selected' : '' }}> 
                                     {{ $theme->name }}
                                 </option>
                                 @endforeach
                             </select>
+                            
                         </div>
 
                         <div class='form-group'>

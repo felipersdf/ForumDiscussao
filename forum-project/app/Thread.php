@@ -44,7 +44,7 @@ class Thread extends Model
 /* Uma thread está associada à um tema */
   public function theme()
   {
-      return $this->belongsTo(Theme::class);
+      return $this->belongsTo(Theme::class, 'theme_id');
   }
 
    /**
@@ -52,7 +52,7 @@ class Thread extends Model
      */
     public function replies()
     {
-        return $this->hasMany(Reply::class);
+        return $this->hasMany(Reply::class, 'thread_id');
     }
 
     public function scopeFilter($query, ThreadFilters $filters)
