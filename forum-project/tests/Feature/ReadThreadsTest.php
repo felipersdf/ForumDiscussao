@@ -31,4 +31,23 @@ class ThreadsTest extends TestCase
         $this->get($this->thread->path())
             ->assertSee($reply->body);
     }
+    function a_user_can_filter_threads_according_to_a_theme()
+    {
+        $theme = create('App\Theme');
+        $threadInTheme = create('App\Thread', ['theme_id' => $theme->id]);
+        $threadNotInTheme = create('App\Thread');
+        $this->get('/threads/' . $theme->slug)
+            ->assertSee($threadInTheme->title)
+            ->assertDontSee($threadNotInTheme->title);
+    }
+
+    function a_user_can_filter_threads_by_any_username()
+    {
+        $this->signIn(create('App\User', ['name' => 'Felipe']));
+        $threadbyFelipe = create('App\Thread', ['user_id' => auth()->id()]);
+        $threadNotFelipe = create('App\Thread');
+        $this->get('threads?by=Felipe')
+            ->assertSee($threadbyFelipe->title)
+            ->assertDontSee($threadNotFelipe->title);
+    }
 }

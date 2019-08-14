@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Thread;
+use App\Theme;
 use Illuminate\Http\Request;
+use App\Filters\ThreadFilters;
+use Illuminate\Support\Facades\Validator;
 
 class ThreadController extends Controller
 {
@@ -12,9 +15,10 @@ class ThreadController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function index()
+    public function index(Theme $theme, ThreadFilters $filters)
     {
-        $threads = Thread::latest()->get();
+        $threads = $this->getThreads($theme, $filters);
+
         return view('threads.index', compact('threads'));
     }
 
@@ -26,23 +30,42 @@ class ThreadController extends Controller
 
     public function store(Request $request)
     {
-        $thread = Thread::create([
-            'user_id' => auth()->id(),
-            'title' => request('title'),
-            'body' => request('body')
-        ]);
-        return redirect($thread->path());
-    }
 
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'body' => 'required',
+            'theme_id' => 'required', 
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->withErrors($validator);
+        } else {
+            Thread::create($request->all());
+
+            return redirect(route('threads.index'))->with('success', 'Thread is successfully created');
+        // } Thread::create([
+        //     'user_id' => auth()->id(),
+        //     'theme_id' => request('theme_id'),
+        //     'title' => request('title'),
+        //     'body' => request('body')
+        // ]);
+        }
+    }
     /**
      * Display the specified resource.
      *
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show(Thread $thread)
+    public function show($theme, Thread $thread)
     {
-        return view('threads.show', compact('thread'));
+        return view('threads.show', [
+            'thread' => $thread, //->paginate(10),
+            'replies' => $thread->replies()->paginate(5)
+        ]);
     }
 
     /**
@@ -51,9 +74,15 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    protected function getThreads(Theme $theme, ThreadFilters $filters)
     {
-        //
+        $threads = Thread::latest()->filter($filters);
+
+        if ($theme->exists) {
+            $threads->where('theme_id', $theme->id);
+        }
+
+        return $threads->get();
     }
 
     /**
@@ -63,9 +92,15 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thread $thread)
+    public function update($theme, Thread $thread)
     {
-        //
+        $this->authorize('update', $thread);
+
+        $thread->update(request()->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]));
+        return $thread;
     }
 
     /**
@@ -74,8 +109,12 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy($theme, Thread $thread)
     {
-        //
+        $thread->delete();
+        if (request()->wantsJson()) {
+            return response([], 204);
+        }
+        return redirect('/threads');
     }
 }
