@@ -1,3 +1,47 @@
+<p align="center">
+  <a href="https://www.ifpb.edu.br/">
+    <img alt="IFPB" src="https://avatars0.githubusercontent.com/u/2523928?s=400&v=4" width=150 >
+  </a>
+  
+  <a href="https://estudante.ifpb.edu.br/cursos/39">
+  <img alt="CSTSI" src="https://henrifrade.github.io/Marvelist/images/others/TSI.svg" width=150>
+  </a>
+</p>
+
+<h1 align="center">
+   Web Programming I 2019.1
+</h1>
+
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/felipersdf/ForumDiscussao?color=%23FF8000">
+
+  <a href="https://github.com/felipersdf">
+    <img alt="Made by Felipe Rodrigues" src="https://img.shields.io/badge/made%20by-Felipe Rodrigues-%2304D361?color=%23FF8000">
+  </a>
+
+  <a href="https://github.com/felipersdf/ForumDiscussao">
+    <img alt="Repo Size" src="https://img.shields.io/github/repo-size/felipersdf/ForumDiscussao?color=%23FF8000">
+  </a>
+  
+  <a href="https://github.com/felipersdf/ForumDiscussao">
+    <img alt="Last commit" src="https://img.shields.io/github/last-commit/felipersdf/ForumDiscussao?color=%23FF8000">
+  </a>
+</p>
+
+---
+
+## :notebook: About 
+
+This repository consists in storing the project produced in the discipline of  Web Programming I 2019.1
+
+---
+## Forum TSI 
+
+![ImagemForum](https://github.com/felipersdf/ForumDiscussao/blob/master/forum-project/ForumTSI.png)
+
+
+
+---
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
@@ -6,11 +50,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-
-## Forum TSI 
-
-![ImagemForum](https://github.com/felipersdf/ForumDiscussao/blob/master/forum-project/ForumTSI.png)
-
 
 
 ## About Laravel
